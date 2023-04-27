@@ -1,0 +1,274 @@
+/* --------------- layout -------------- */
+
+:root {
+  margin: 0;
+  --main-pink: #ffc0cb;
+  --main-yellow: #EADB67;
+
+  --page-pink: #faacbc;
+  --page-blue: #2B3F7D;
+
+  --parent-pink: #f6a1b2;
+  --parent-blue: #44527C;
+
+  --child-pink: #f9cad4;
+  --child-blue: #5F6D91;
+
+  --parent-button-border-blue: #77e8fa;
+
+  --hover-pink: #f9dae1;
+  --hover-blue: #dae1f9;
+
+  --icon-border-grey: #cab3c6;
+  --parent-border-grey: #998888;
+  --parent-border: solid 1px var(--parent-border-grey);
+  --child-border-grey: #aa90a0;
+  --child-border: solid 1px var(--child-border-grey);
+
+  --selected-white: #e2e2e2;
+  --selected-pink: #f9cad1;
+  --selected-blue: #cad1f9;
+
+  --text-white: #dddddd;
+  --text-yellow: #EADB67;
+  --text-black: #151515;
+
+  --hover-border-color: #EEEE77FF;
+
+  --bubble-border-pink: #e6679055;
+  --bubble-border-blue: #6790e655;
+
+  color: var(--text-black);
+}
+
+button {
+  color: var(--text-black);
+}
+
+.app-background {
+  background-color: rgb(193, 182, 178);
+  background-image: url("../img/bkgnd9.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.app-layout {
+  background-color: rgba(255, 210, 255, .1);
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.app-header {
+  background-color: black;
+  color: teal;
+  height: 7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  /*max-width: 1200px;*/
+  width: 100%;
+  z-index: 200;
+}
+
+.app-footer {
+  background-color: black;
+  color: teal;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*position: sticky;
+  bottom: 0;*/
+  width: 100%;
+  z-index: 200;
+}
+
+.app-main {
+  background-color: var(--main-yellow);
+  max-width: 1200px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0;
+
+  display: grid;
+  justify-content: center;
+  flex: 1;
+  /*one big fat row...the page section will likely be column but the default is flex row with justify center*/
+  /*the width is set to 100% to add fake child margin and child sections (page-section class) are max width 960px*/
+  /*the flex grow 1 makes to row fill the height and pushes the sticky footer to the bottom of the page*/
+}
+
+.page-section {
+  background-color: var(--page-blue);
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  padding-left: 0rem;
+  padding-right: 0rem;
+  max-width: 960px;
+  width: 100%;
+}
+
+.parent-article {
+  background-color: var(--parent-blue);
+  border: var(--parent-border);
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  margin: 0.5rem 0.25rem;
+}
+
+.child-article {
+  background-color: var(--child-blue);
+  border: var(--child-border);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin-top: .25rem;
+  margin-bottom: .25rem;
+  margin-left: .25rem;
+  margin-right: .25rem;
+}
+
+.parent-button {
+  padding: 1rem;
+  border-radius: 1rem;
+  border: solid 3px var(--parent-button-border-blue);
+  font-size: 1.2rem;
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+  cursor: pointer;
+  /*background-color: rgb(202, 238, 249);*/
+  background-color: rgb(194, 249, 250);
+  box-shadow: 0px 0px 18px white;
+}
+
+.svg-arrow {
+  width: 2.4rem;
+  fill: var(--parent-button-border-blue);
+  stroke: var(--parent-button-border-blue);
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+
+.hover-wrapper {
+  cursor: pointer;
+}
+
+.hover-wrapper:hover .svg-arrow {
+  fill: var(--selected-white);
+  stroke: var(--selected-white);
+}
+
+.hover-wrapper:hover .parent-button {
+  background-color: var(--selected-white);
+  box-shadow: none;
+  border: solid 3px var(--hover-border-color);
+}
+
+.hover-wrapper:hover .child-article {
+  /*background-color: var(--hover-pink);*/
+  outline: solid 2px var(--hover-border-color);
+}
+
+.hover-wrapper:hover .toppings-checkmark {
+  border: solid 3px var(--hover-border-color);
+}
+
+/* ------- layout specific ------------ */
+
+.toppings-row {
+  display: grid;
+  grid-template-columns: 3em 4em 8em;
+  align-items: center;
+}
+
+.toppings-col {
+  display: grid;
+  grid-template-columns: 5em;
+  justify-items: center;
+  grid-gap: 1em;
+}
+
+.toppings-img2 {
+  border-radius: 2em;
+  border: var(--child-border);
+  width: 2em;
+  height: 2em;
+}
+
+.toppings-img3 {
+  border-radius: 3em;
+  border: solid 3px var(--icon-border-grey);
+  width: 3em;
+  height: 3em;
+}
+
+.toppings-checkmark {
+  border-radius: 2em;
+  border: solid 3px rgb(202, 179, 198);
+  width: 2em;
+  background: var(--seleced-white);
+  cursor: pointer;
+}
+
+.number-circle {
+  border: 1px solid black;
+  border-radius: .75rem;
+  background-color: rgb(250, 172, 188);
+  padding: 0.25rem;
+}
+
+.home-img1 {
+  max-height: 6rem;
+}
+
+.logo-header {
+  max-height: 6rem;
+  padding-bottom: 0rem;
+}
+
+.logo-footer {
+  height: 2rem;
+  margin: 0.5rem;
+  border: solid 0px none;
+}
+
+.sim-pic {
+  width: 8.6rem;
+  height: 5.8rem;
+}
+
+.sim-movie {
+  max-width: 40.2rem;
+  border-radius: 0.5rem;
+
+  border: var(--child-border);
+}
+
+.titanium {
+  background-image: url("../img/titanium.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.kevmetz {
+  color: black;
+  padding: 0.5rem;
+  margin: 1rem;
+  border: solid 3px var(--parent-border-grey);
+
+  border-radius: 1rem;
+  font-size: 1.8rem;
+}
+
+.kevmetz:hover {
+  color: var(--hover-blue);
+  cursor: pointer;
+}
